@@ -1,24 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Item from "./Item";
 
 export default function ItemList(props) {
   const { todoList } = props;
-  const [, setItems] = useState(todoList.todos);
+  const [items, setItems] = useState([...todoList.todos]);
 
-  const deleteItem = (itemText) => {
-    todoList.delete(itemText);
-    setItems(todoList.todos);
-  };
+  useEffect(() => {
+    const handleChange = function (todos) {
+      setItems([...todos]);
+    };
 
-  const items = todoList.todos.map((itemText, index) => (
-    <li key={index}>
-      <Item text={itemText} onDelete={deleteItem} />
-    </li>
-  ));
+    todoList.subscribe(handleChange);
+    return () => todoList.unsubscribe(handleChange);
+  }, [todoList]);
 
   return (
     <div className="itemList">
-      <ul>{items}</ul>
+      <ul>
+        {items.map((item, index) => (
+          <li key={index}>
+            <Item
+              text={item}
+              onDelete={(itemText) => todoList.delete(itemText)}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
