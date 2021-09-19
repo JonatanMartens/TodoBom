@@ -10,6 +10,8 @@ export default function TodoAdder(props) {
 
   const handleSubmit = (event) => {
     todoList.create(todoText);
+    setTodoText("");
+    event.preventDefault();
   };
 
   return (
