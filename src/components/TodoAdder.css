@@ -1,0 +1,11 @@
+.todoAdder {
+  display: flex;
+  align-content: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.todoAdder input {
+  width: 100%;
+  font-size: 1.5em;
+}
