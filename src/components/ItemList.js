@@ -11,21 +11,18 @@ export default function ItemList(props) {
     };
 
     todoList.subscribe(handleChange);
-    return () => todoList.unsubscribe(handleChange);
+    return () => todoList.unsubscribe(setItems);
   }, [todoList]);
+
+  const itemsAsComponents = items.map((item, index) => (
+    <li key={index}>
+      <Item text={item} onDelete={(itemText) => todoList.delete(itemText)} />
+    </li>
+  ));
 
   return (
     <div className="itemList">
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            <Item
-              text={item}
-              onDelete={(itemText) => todoList.delete(itemText)}
-            />
-          </li>
-        ))}
-      </ul>
+      <ul>{itemsAsComponents}</ul>
     </div>
   );
 }
