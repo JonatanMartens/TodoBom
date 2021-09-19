@@ -16,7 +16,12 @@ export default function TodoAdder(props) {
 
   return (
     <form className="todoAdder" onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} value={todoText}></input>
+      <input
+        type="text"
+        placeholder="Enter a new todo and press enter"
+        onChange={handleChange}
+        value={todoText}
+      ></input>
     </form>
   );
 }
