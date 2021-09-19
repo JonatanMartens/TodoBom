@@ -1,0 +1,9 @@
+.itemList {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.itemList ul {
+  list-style: none;
+  padding-left: 0;
+}
