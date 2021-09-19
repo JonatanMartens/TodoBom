@@ -9,6 +9,10 @@ export default class TodoList {
       throw new Error("Todo already exists!");
     }
 
+    if (todo === "") {
+      throw new Error("Todo cannot be empty!");
+    }
+
     this.todos.push(todo);
     this.notifySubscribers();
   }
