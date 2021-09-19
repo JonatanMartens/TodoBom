@@ -1,11 +1,23 @@
 .todoAdder {
   display: flex;
+  flex-direction: column;
   align-content: center;
-  width: 60%;
   margin: 0 auto;
+  width: 60%;
 }
 
-.todoAdder input {
+.todoAdder form input {
   width: 100%;
   font-size: 1.5em;
+}
+
+.todoAdder:hidden {
+  opacity: 0%;
+}
+
+.errorMessage {
+  color: #d0451b;
+  font-size: 1.5em;
+  font-style: bold;
+  text-align: center;
 }
